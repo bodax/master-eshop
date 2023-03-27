@@ -2,6 +2,7 @@ package com.bodax.home.services;
 
 import com.bodax.home.domain.entity.Category;
 import com.bodax.home.domain.repository.CategoryRepository;
+import com.bodax.home.dtos.PropertyDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,13 +16,14 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    @Override
-    public Category findCategoryById(Long categoryId) {
-        return categoryRepository.findById(categoryId).orElse(null);
-    }
 
     @Override
     public List<Category> getAllCategories() {
-        return (List<Category>) categoryRepository.findAll();
+        return categoryRepository.findAllCategories();
+    }
+
+    @Override
+    public List<PropertyDto> getCharacteristicsValuesByCategory(String groupUrl) {
+        return categoryRepository.getCharacteristicsValuesByCategory(groupUrl);
     }
 }

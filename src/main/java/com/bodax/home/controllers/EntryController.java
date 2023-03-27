@@ -1,6 +1,6 @@
 package com.bodax.home.controllers;
 
-import com.bodax.home.dtos.EntryPageInfo;
+import com.bodax.home.dtos.EntryPageInfoDto;
 import com.bodax.home.services.PageInfoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +16,7 @@ public class EntryController {
     }
 
     @GetMapping("/api/page")
-    public EntryPageInfo getEntryInformation(@RequestParam (name = "lan") String langCode) {
+    public EntryPageInfoDto getEntryInformation(@RequestParam (name = "lan") String langCode) {
 
         return pageInfoService.getEntryPageInformation();
     }

@@ -1,8 +1,16 @@
 package com.bodax.home.domain.repository;
 
 import com.bodax.home.domain.entity.Category;
-import org.springframework.data.repository.CrudRepository;
+import com.bodax.home.dtos.PropertyDto;
 
-public interface CategoryRepository extends CrudRepository<Category, Long> {
+import java.util.List;
+
+public interface CategoryRepository {
+
+    List<Category> findAllCategories();
+
+
+
+    List<PropertyDto> getCharacteristicsValuesByCategory (String groupUrl);
 
 }

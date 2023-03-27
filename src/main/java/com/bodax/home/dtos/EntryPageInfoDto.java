@@ -9,6 +9,6 @@ import java.util.List;
 
 @Setter
 @Getter
-public class EntryPageInfo implements Serializable {
+public class EntryPageInfoDto implements Serializable {
     private List<Category> categories;
 }

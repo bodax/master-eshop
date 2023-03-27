@@ -1,6 +1,6 @@
 package com.bodax.home.services;
 
-import com.bodax.home.dtos.EntryPageInfo;
+import com.bodax.home.dtos.EntryPageInfoDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,8 +13,8 @@ public class PageInfoServiceImpl implements PageInfoService {
     }
 
     @Override
-    public EntryPageInfo getEntryPageInformation() {
-        EntryPageInfo pageInfo = new EntryPageInfo();
+    public EntryPageInfoDto getEntryPageInformation() {
+        EntryPageInfoDto pageInfo = new EntryPageInfoDto();
         pageInfo.setCategories(categoryService.getAllCategories());
 
         return pageInfo;
