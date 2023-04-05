@@ -1,15 +1,15 @@
 package com.bodax.home.domain.mappers;
 
-import com.bodax.home.domain.entity.Category;
+import com.bodax.home.dtos.CategoryDto;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CategoryMapper implements RowMapper<Category> {
+public class CategoryMapper implements RowMapper<CategoryDto> {
     @Override
-    public Category mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Category category = new Category();
+    public CategoryDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+        CategoryDto category = new CategoryDto();
         category.setId(rs.getLong("category_id"));
         category.setName(rs.getString("name"));
         category.setUrl(rs.getString("url"));

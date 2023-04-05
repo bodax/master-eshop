@@ -1,14 +1,16 @@
 package com.bodax.home.services;
 
-import com.bodax.home.domain.entity.Category;
-import com.bodax.home.dtos.PropertyDto;
+import com.bodax.home.dtos.CategoryDto;
+import com.bodax.home.dtos.CategoryPropertyDto;
+import com.bodax.home.dtos.PropertyValuesDto;
 
 import java.util.List;
 
 public interface CategoryService {
 
-    List<Category> getAllCategories();
+    List<CategoryDto> getAllCategories();
 
-    List<PropertyDto> getCharacteristicsValuesByCategory(String groupUrl);
+    List<PropertyValuesDto> getPropertyValuesByCategory(String groupUrl);
 
+    List<CategoryPropertyDto> getCategoryProperties(String groupUrl);
 }

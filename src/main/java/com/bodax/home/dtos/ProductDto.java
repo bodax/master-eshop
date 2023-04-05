@@ -20,6 +20,7 @@ public class ProductDto {
     @JsonProperty("category_name")
     private String categoryName;
     private String url;
+    @JsonProperty("filename")
     private String fileName;
     @JsonProperty("base_price")
     private Double price;
