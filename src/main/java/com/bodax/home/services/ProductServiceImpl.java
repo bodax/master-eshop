@@ -2,6 +2,7 @@ package com.bodax.home.services;
 
 import com.bodax.home.domain.repository.ProductRepository;
 import com.bodax.home.dtos.ProductDto;
+import com.bodax.home.dtos.ProductMetaInfo;
 import com.bodax.home.dtos.ProductPropertiesDto;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +41,20 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductPropertiesDto> getProductProperties(String productUrl) {
         return productRepository.getProductPropertiesByUrl(productUrl);
+    }
+
+    @Override
+    public List<ProductDto> getRelatedProducts(String productUrl) {
+        return productRepository.getRelatedProducts(productUrl);
+    }
+
+    @Override
+    public String getProductDescription(String productUrl) {
+        return productRepository.getProductDescriptionByUrl(productUrl);
+    }
+
+    @Override
+    public ProductMetaInfo getProductMetaInfo(String productUrl) {
+        return productRepository.getProductMetaInfo(productUrl);
     }
 }

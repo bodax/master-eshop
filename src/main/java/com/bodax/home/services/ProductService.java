@@ -1,6 +1,7 @@
 package com.bodax.home.services;
 
 import com.bodax.home.dtos.ProductDto;
+import com.bodax.home.dtos.ProductMetaInfo;
 import com.bodax.home.dtos.ProductPropertiesDto;
 
 import java.util.List;
@@ -18,4 +19,9 @@ public interface ProductService {
 
     List<ProductPropertiesDto> getProductProperties(String productUrl);
 
+    List<ProductDto> getRelatedProducts(String productUrl);
+
+    String getProductDescription(String productUrl);
+
+    ProductMetaInfo getProductMetaInfo(String productUrl);
 }

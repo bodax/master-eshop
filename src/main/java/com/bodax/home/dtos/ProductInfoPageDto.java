@@ -1,7 +1,5 @@
-package com.bodax.home.services;
+package com.bodax.home.dtos;
 
-import com.bodax.home.dtos.ProductDto;
-import com.bodax.home.dtos.ProductPropertiesDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,5 +18,13 @@ public class ProductInfoPageDto {
 
     @JsonProperty("characteristics")
     private List<ProductPropertiesDto> productProperties;
+
+    @JsonProperty("related_products")
+    private List<ProductDto> relatedProducts;
+
+    private String description;
+
+    @JsonProperty("meta")
+    private ProductMetaInfo productMetaInfo;
 
 }

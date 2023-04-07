@@ -35,7 +35,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     public List<PropertyValuesDto> getCharacteristicsValuesByCategory(String groupUrl) {
         final String query = ResourceUtils.resourceAsString("db/getPropertyValuesByCategory.sql");
 
-        return jdbcTemplate.query(query, Map.of("lang", getLocaleId(), "url", groupUrl),
+        return jdbcTemplate.query(query, Map.of("lang", String.valueOf(getLocaleId()), "url", groupUrl),
                 (rs, rowNum) -> PropertyValuesDto.builder()
                         .propertyId(rs.getInt("property_id"))
                         .name(rs.getString("name"))
@@ -59,8 +59,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         final String query = "SELECT category_id, name, description, meta_title, meta_keywords, meta_description FROM category_lang WHERE url = :url AND language_id = '1'";
 
         return jdbcTemplate.query(query, Map.of("lang", getLocaleId(), "url", groupUrl),
-                (rs, rowNum) -> CategoryMetaInfoDto.builder().categoryId(rs.getInt("category_id"))
-                        .categoryName(rs.getString("name"))
+                (rs, rowNum) -> CategoryMetaInfoDto.builder().id(rs.getInt("category_id"))
+                        .name(rs.getString("name"))
                         .description(rs.getString("description"))
                         .metaTitle(rs.getString("meta_title"))
                         .metaKeywords(rs.getString("meta_keywords"))

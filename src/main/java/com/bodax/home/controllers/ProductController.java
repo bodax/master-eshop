@@ -1,7 +1,7 @@
 package com.bodax.home.controllers;
 
 import com.bodax.home.dtos.ProductDto;
-import com.bodax.home.services.ProductInfoPageDto;
+import com.bodax.home.dtos.ProductInfoPageDto;
 import com.bodax.home.services.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,10 +27,14 @@ public class ProductController {
 
     @GetMapping("/api/page/product/{productUrl}")
     public Map<String, ProductInfoPageDto> getProductById(@PathVariable String productUrl, @RequestParam String lan) {
-        ProductInfoPageDto productInfoPage = new ProductInfoPageDto();
+        var productInfoPage = new ProductInfoPageDto();
         productInfoPage.setProduct(productService.getProductById(productUrl));
         productInfoPage.setPhotos(productService.getPhotosNameByProductUrl(productUrl));
         productInfoPage.setProductProperties(productService.getProductProperties(productUrl));
+        productInfoPage.setRelatedProducts(productService.getRelatedProducts(productUrl));
+        productInfoPage.setDescription(productService.getProductDescription(productUrl));
+        productInfoPage.setProductMetaInfo(productService.getProductMetaInfo(productUrl));
+
         return Map.of("productInfo", productInfoPage);
     }
 

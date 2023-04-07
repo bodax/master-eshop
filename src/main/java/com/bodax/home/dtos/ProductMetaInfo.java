@@ -8,11 +8,13 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @SuperBuilder
-public class CategoryMetaInfoDto extends MetaInfo {
+public class ProductMetaInfo extends MetaInfo {
 
-    @JsonProperty("category_id")
+    @JsonProperty("product_id")
     @Override
     public Integer getId() {
         return super.getId();
     }
+
+
 }

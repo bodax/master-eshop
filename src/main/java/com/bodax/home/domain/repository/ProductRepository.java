@@ -1,6 +1,7 @@
 package com.bodax.home.domain.repository;
 
 import com.bodax.home.dtos.ProductDto;
+import com.bodax.home.dtos.ProductMetaInfo;
 import com.bodax.home.dtos.ProductPropertiesDto;
 
 import java.util.List;
@@ -17,4 +18,10 @@ public interface ProductRepository {
     Set<String> getProductPhotosByCategoryUrl(String url);
 
     List<ProductPropertiesDto> getProductPropertiesByUrl(String productUrl);
+
+    List<ProductDto> getRelatedProducts(String productUrl);
+
+    String getProductDescriptionByUrl(String productUrl);
+
+    ProductMetaInfo getProductMetaInfo(String productUrl);
 }
