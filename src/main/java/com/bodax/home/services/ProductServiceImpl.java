@@ -57,4 +57,24 @@ public class ProductServiceImpl implements ProductService {
     public ProductMetaInfo getProductMetaInfo(String productUrl) {
         return productRepository.getProductMetaInfo(productUrl);
     }
+
+    @Override
+    public List<ProductDto> getDiscountProducts() {
+        return productRepository.getDiscountProducts();
+    }
+
+    @Override
+    public List<ProductDto> getNewProducts() {
+        return productRepository.getNewProducts();
+    }
+
+    @Override
+    public List<ProductDto> getProductsByIds(Set<Integer> watchedProductIds) {
+        return productRepository.getProductsByIds(watchedProductIds);
+    }
+
+    @Override
+    public List<?> getProductNews() {
+        return null;
+    }
 }

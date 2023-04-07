@@ -2,9 +2,10 @@ package com.bodax.home.controllers;
 
 import com.bodax.home.dtos.EntryPageInfoDto;
 import com.bodax.home.services.PageInfoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Set;
 
 @RestController
 public class EntryController {
@@ -15,10 +16,10 @@ public class EntryController {
         this.pageInfoService = pageInfoService;
     }
 
-    @GetMapping("/api/page")
-    public EntryPageInfoDto getEntryInformation(@RequestParam (name = "lan") String langCode) {
+    @PostMapping("/api/page")
+    public EntryPageInfoDto getEntryInformation(@RequestBody Set<Integer> watchedProductIds) {
 
-        return pageInfoService.getEntryPageInformation();
+        return pageInfoService.getEntryPageInformation(watchedProductIds);
     }
 
 

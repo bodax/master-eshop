@@ -24,4 +24,12 @@ public interface ProductService {
     String getProductDescription(String productUrl);
 
     ProductMetaInfo getProductMetaInfo(String productUrl);
+
+    List<ProductDto> getDiscountProducts();
+
+    List<ProductDto> getNewProducts();
+
+    List<ProductDto> getProductsByIds(Set<Integer> watchedProductIds);
+
+    List<?> getProductNews();
 }

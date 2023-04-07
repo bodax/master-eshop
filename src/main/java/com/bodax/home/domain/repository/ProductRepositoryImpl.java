@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static com.bodax.home.configuration.internationalization.LocaleContext.getLocaleId;
+import static com.bodax.home.configuration.internationalization.LocaleContext.getLocaleIdString;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
@@ -92,5 +93,34 @@ public class ProductRepositoryImpl implements ProductRepository {
                         .metaKeywords(rs.getString("meta_keywords"))
                         .metaDescription(rs.getString("meta_description"))
                         .build());
+    }
+
+    @Override
+    public List<ProductDto> getDiscountProducts() {
+        var query = ResourceUtils.resourceAsString("db/getProductWithDiscount.sql");
+
+        return jdbcTemplate.query(query, Map.of("lang", String.valueOf(getLocaleId())), new ProductMapper());
+    }
+
+    @Override
+    public List<ProductDto> getNewProducts() {
+        var query = ResourceUtils.resourceAsString("db/getNewProducts.sql");
+
+        return jdbcTemplate.query(query, Map.of("lang", getLocaleId()), new ProductMapper());
+    }
+
+    @Override
+    public List<ProductDto> getProductsByIds(Set<Integer> watchedProductIds) {
+        var query = ResourceUtils.resourceAsString("db/getProductsByIds.sql");
+
+        return jdbcTemplate.query(query, Map.of("lang", getLocaleId(), "ids", watchedProductIds), new ProductMapper());
+
+    }
+
+    @Override
+    public List<ProductDto> getProductsByUserSearch(String searchText, Integer page) {
+        var query = ResourceUtils.resourceAsString("db/getProductsByUserSearch.sql");
+
+        return jdbcTemplate.query(query, Map.of("lang", getLocaleIdString(), "name", searchText), new ProductMapper());
     }
 }

@@ -24,4 +24,12 @@ public interface ProductRepository {
     String getProductDescriptionByUrl(String productUrl);
 
     ProductMetaInfo getProductMetaInfo(String productUrl);
+
+    List<ProductDto> getDiscountProducts();
+
+    List<ProductDto> getNewProducts();
+
+    List<ProductDto> getProductsByIds(Set<Integer> watchedProductIds);
+
+    List<ProductDto> getProductsByUserSearch(String searchText, Integer page);
 }

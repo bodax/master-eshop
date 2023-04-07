@@ -9,4 +9,8 @@ public class LocaleContext {
     public static int getLocaleId() {
         return Lang.toLangCode(LocaleContextHolder.getLocale().toLanguageTag());
     }
+
+    public static String getLocaleIdString() {
+        return String.valueOf(getLocaleId());
+    }
 }
